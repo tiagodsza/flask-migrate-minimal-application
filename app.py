@@ -1,22 +1,18 @@
-from flask import Flask
-from flask_sqlalchemy import  SQLAlchemy
-from flask_migrate import Migrate, MigrateCommand
-from flask_script import Manager
+from datetime import datetime
 
+from flask_migrate import Migrate
+from movie.model import Movie
+from actor.model import Actor
+from database import db, app
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:""@localhost/person"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-manager = Manager(app)
-
-manager.add_command('db', MigrateCommand)
-
-class Person(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
 
 if __name__ == 'main':
-    manager.run()
+    app.run()
+
+#Comente a linha abaixo antes de fazer o migrate
+# leonardo = Actor(name="Leonardo de Caprio")
+# mathew = Actor(name="matthew mcconaughey")
+#
+# db.session.add(leonardo)
+# db.session.commit()

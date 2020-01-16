@@ -12,6 +12,10 @@ flask-script = "*"
 [packages]
 flask = "*"
 flask-mysqldb = "*"
+flask-script = "*"
+db = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
 
 [requires]
 python_version = "3.8"
